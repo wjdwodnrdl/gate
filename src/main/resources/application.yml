@@ -9,11 +9,11 @@ spring:
     gateway:
       routes:
         - id: order
-          uri: http://localhost:8081
+          uri: http://my-order:8080
           predicates:
-            - Path=/orders/**/orders/** 
+            - Path=/orders/**/
         - id: delivery
-          uri: http://localhost:8082
+          uri: http://my-delivery:8080
           predicates:
             - Path=/deliveries/**, /cancellations/**
       globalcors:
@@ -38,11 +38,11 @@ spring:
         - id: order
           uri: http://order:8080
           predicates:
-            - Path=/orders/**/orders/** 
+            - Path=/orders/**
         - id: delivery
           uri: http://delivery:8080
           predicates:
-            - Path=/deliveries/**/cancellations/**/deliveries/**/cancellations/** 
+            - Path=/deliveries/**, /cancellations/**
       globalcors:
         corsConfigurations:
           '[/**]':
